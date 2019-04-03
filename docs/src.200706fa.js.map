@@ -1,0 +1,1 @@
+{"version":3,"sources":["src/index.ts"],"names":[],"mappings":";AAAA,aAAA,SAAS,KAAK,YAAc","file":"src.200706fa.js","sourceRoot":"..","sourcesContent":["document.body.textContent = 'hello world';"]}
