@@ -52,7 +52,21 @@ const dlBtn = document.querySelector("button") as HTMLButtonElement;
 dlBtn.addEventListener("click", () => {
   const canvas = document.querySelector("canvas") as HTMLCanvasElement;
   const dl = document.createElement("a");
-  dl.href = canvas.toDataURL("image/png");
+  dl.href = window.URL.createObjectURL(
+    Base64toBlob(canvas.toDataURL("image/png"))
+  );
   dl.download = "sekiro.png";
   dl.click();
 });
+
+const Base64toBlob = (base64: string) => {
+  const tmp = base64.split(",");
+  const data = atob(tmp[1]);
+  const mime = tmp[0].split(":")[1].split(";")[0];
+  const buf = new Uint8Array(data.length);
+  for (let i = 0; i < data.length; i++) {
+    buf[i] = data.charCodeAt(i);
+  }
+  const blob = new Blob([buf], { type: mime });
+  return blob;
+};
