@@ -8,7 +8,7 @@
     "build": "parcel build index.html -d docs"
   },
   "devDependencies": {
-    "parcel": "^1.12.3",
-    "typescript": "^3.6.3"
+    "parcel": "^1.12.4",
+    "typescript": "^4.0.5"
   }
 }
