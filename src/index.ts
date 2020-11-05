@@ -9,7 +9,7 @@ inputFile.addEventListener("change", ev => {
   }
 
   const reader = new FileReader();
-  reader.onload = e => {
+  reader.onload = () => {
     const image = new Image();
     image.src = reader.result as string;
     image.onload = () => {
@@ -37,12 +37,18 @@ inputFile.addEventListener("change", ev => {
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, image.width, image.height);
 
-      ctx.fillStyle = "red";
-      ctx.font = `${r / 4}px '游明朝'`;
-      ctx.fillText("死", image.width / 2 - r / 8, image.height / 2);
+      // ctx.fillStyle = "red";
+      // ctx.font = `${r / 4}px '游明朝'`;
+      // ctx.fillText("死", image.width / 2 - r / 8, image.height / 2);
 
-      ctx.font = `${r / 16}px '游明朝'`;
-      ctx.fillText("DEATH", image.width / 2 - r / 8, image.height / 2 + r / 8);
+      // ctx.font = `${r / 16}px '游明朝'`;
+      // ctx.fillText("DEATH", image.width / 2 - r / 8, image.height / 2 + r / 8);
+
+      const textImg = new Image();
+      textImg.onload = () => {
+        ctx.drawImage(textImg, image.width / 2 - r / 4, image.height / 2 - r / 4, r / 2, r / 2);
+      };
+      textImg.src = './death.png';
     };
   };
   reader.readAsDataURL(file);
